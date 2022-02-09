@@ -1,0 +1,34 @@
+type Message {
+  id: ID!
+  user: String!
+  content: [String!]!
+}
+
+type Typing {
+  user: String
+  isTyping: Boolean!
+}
+
+input MessageInput {
+  user: String!
+  content: [String!]!
+}
+
+input IsTypingInput {
+  user: String
+  isTyping: Boolean!
+}
+
+type Query {
+  messages: [Message!]!
+}
+
+type Mutation {
+  postMessage(data: MessageInput!): ID!
+  changeIsTyping(data: IsTypingInput!): Boolean!
+}
+
+type Subscription {
+  messages: [Message!]!
+  isTyping: Typing!
+}
